@@ -5,7 +5,7 @@ We are working on Theme 3 i.e,
 
 Frontend work begins....
 # Team TechX :-
-Vanshika Pandey 
-Abhishek Kale
-Anshit Singh
-Adarsh Roy
+Vanshika Pandey, 
+Abhishek Kale,
+Anshit Singh,
+Adarsh Roy.

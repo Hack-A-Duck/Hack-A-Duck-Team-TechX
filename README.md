@@ -10,7 +10,7 @@ Frontend work begins....
 deployed at
 
 
-[hack-a-duck.web.app](https://hack-a-duck.web.app)
+[teamx-9c73b.web.app](https://teamx-9c73b.web.app/)
 
 
 # Team TechX :-

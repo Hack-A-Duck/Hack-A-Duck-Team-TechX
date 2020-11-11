@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -13,7 +13,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import  {Link} from  'react-router-dom'
+import  {Link} from  'react-router-dom';
+import {Auth} from '../firebase/firebase';
+
+
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -67,9 +72,9 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
-
+  const user = Auth.currentUser;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -82,9 +87,13 @@ export default function Home() {
     <Typography variant="h6" className={classes.title} >
       We Stand Together
     </Typography>
-    <Link to="/login" style={{textDecoration:'none'}}>
+    {
+      user?<Link to="/login" style={{textDecoration:'none'}}>
+      <Button variant="contained" disableElevation onClick={()=>{Auth.signOut()}}>Logout</Button>
+      </Link>:<Link to="/login" style={{textDecoration:'none'}}>
     <Button variant="contained" disableElevation>Login</Button>
     </Link>
+    }
   </Toolbar>
 </AppBar>
       <main>
@@ -94,6 +103,10 @@ export default function Home() {
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               We Stand Together
             </Typography>
+            {user?<Typography variant="h5" align="center" color="textSecondary" paragraph>
+              scroll below
+            </Typography>:
+            <Fragment>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Get Donations for your NGO , organization or for anyone who is in need , Sign up - Add a donation add details upload documents get noticed by hundreds of people
             </Typography>
@@ -115,6 +128,7 @@ export default function Home() {
                 </Grid>
               </Grid>
             </div>
+            </Fragment> }
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">

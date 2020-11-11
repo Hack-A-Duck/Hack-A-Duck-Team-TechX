@@ -13,8 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-
+import  {Link} from  'react-router-dom'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -83,7 +82,9 @@ export default function Home() {
     <Typography variant="h6" className={classes.title} >
       We Stand Together
     </Typography>
-    <Button color="inherit">Login</Button>
+    <Link to="/login" style={{textDecoration:'none'}}>
+    <Button variant="contained" disableElevation>Login</Button>
+    </Link>
   </Toolbar>
 </AppBar>
       <main>
@@ -99,14 +100,18 @@ export default function Home() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                 <Link to="/login" style={{textDecoration:'none'}}>
+                 <Button variant="contained" color="primary">
                     Get Donation
                   </Button>
+                 </Link>
                 </Grid>
                 <Grid item>
+                  <Link to="/signup" style={{textDecoration:'none'}}>
                   <Button variant="outlined" color="primary">
                     Sign up
                   </Button>
+                  </Link>
                 </Grid>
               </Grid>
             </div>

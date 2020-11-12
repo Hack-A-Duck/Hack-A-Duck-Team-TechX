@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react';
+import React,{Fragment,useEffect,useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import  {Link} from  'react-router-dom';
-import {Auth} from '../firebase/firebase';
+import {Auth ,db} from '../firebase/firebase';
 
 
 
@@ -83,7 +83,19 @@ const useStyles = makeStyles((theme) => ({
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Home(props) {
+  const [donations,setDoantions] = useState([]);
   const classes = useStyles();
+  
+  useEffect(()=>{
+    const donRef  = db.collection('donations');
+    donRef.get().then(
+      (snap)=>{
+        const data = snap.docs.map(doc => doc.data());
+        setDoantions(data)
+        console.log("change")
+      }
+    )
+  },[])
   const user = Auth.currentUser;
   return (
     <React.Fragment>
@@ -153,8 +165,8 @@ export default function Home(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {donations.map((donation) => (
+              <Grid item key={donation.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -163,10 +175,10 @@ export default function Home(props) {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {donation.title}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {donation.description}
                     </Typography>
                   </CardContent>
                   <CardActions>

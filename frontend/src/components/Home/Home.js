@@ -21,12 +21,13 @@ import {Auth ,db} from '../firebase/firebase';
 
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      we are together by Tech X  @ hack a Duck 
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -154,10 +155,13 @@ export default function Home(props) {
             </div>
             </Fragment> }
             {
-              user?<Fab color="secondary" variant="extended" className={classes.fab}>
+              user?
+              <Link to="/add">
+              <Fab color="secondary" variant="extended" className={classes.fab}>
               <AddIcon className={classes.extendedIcon} />
               Add new
-            </Fab>:<React.Fragment></React.Fragment>
+            </Fab>
+            </Link>:<React.Fragment></React.Fragment>
             }
           </Container>
           
@@ -170,8 +174,8 @@ export default function Home(props) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                    image="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+                    title="Make a Change"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">

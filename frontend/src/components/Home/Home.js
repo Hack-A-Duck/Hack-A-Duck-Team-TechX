@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React,{Fragment,useEffect,useState} from 'react';
-=======
-import React,{Fragment} from 'react';
->>>>>>> eb94d4b840773ce03d4931574d4960b09240c725
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,12 +16,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import  {Link} from  'react-router-dom';
-<<<<<<< HEAD
 import {Auth ,db} from '../firebase/firebase';
 
-=======
-import {Auth} from '../firebase/firebase';
->>>>>>> eb94d4b840773ce03d4931574d4960b09240c725
 
 
 

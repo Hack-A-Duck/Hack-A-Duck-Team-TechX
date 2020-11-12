@@ -2,6 +2,8 @@ import React,{Fragment} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -68,6 +70,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+  fab: {
+    position: 'fixed',
+    bottom:'10%',
+    right:'5%',
+  }
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -94,9 +104,11 @@ export default function Home(props) {
     <Button variant="contained" disableElevation>Login</Button>
     </Link>
     }
+
   </Toolbar>
 </AppBar>
       <main>
+      
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
@@ -104,7 +116,7 @@ export default function Home(props) {
               We Stand Together
             </Typography>
             {user?<Typography variant="h5" align="center" color="textSecondary" paragraph>
-              scroll below
+              Small actions from a lot of people make big changes
             </Typography>:
             <Fragment>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
@@ -129,7 +141,14 @@ export default function Home(props) {
               </Grid>
             </div>
             </Fragment> }
+            {
+              user?<Fab color="secondary" variant="extended" className={classes.fab}>
+              <AddIcon className={classes.extendedIcon} />
+              Add new
+            </Fab>:<React.Fragment></React.Fragment>
+            }
           </Container>
+          
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
